@@ -1,5 +1,16 @@
 plugins {
-    id 'java'
+    id 'application'
+    id 'checkstyle'
+    id 'jacoco'
+}
+
+application {
+    mainClass = 'hexlet.code.App'
+}
+
+compileJava {
+    options.release = 20
+    options.compilerArgs += ["-Aproject=${project.group}${project.name}"]
 }
 
 group = 'hexlet.code'
@@ -14,6 +25,14 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true;
+    }
+}
+
 test {
+    finalizedBy jacocoTestReport
     useJUnitPlatform()
 }
