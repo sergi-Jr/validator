@@ -1,4 +1,6 @@
-package hexlet.code;
+package hexlet.code.schemas;
+
+import hexlet.code.abstracts.BaseSchema;
 
 public class NumberSchema extends BaseSchema<Integer> {
     private record Bound(int lower, int upper) { }
