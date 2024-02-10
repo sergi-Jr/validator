@@ -4,7 +4,7 @@ import hexlet.code.abstracts.BaseSchema;
 
 import java.util.Map;
 
-public class MapSchema<T, R> extends BaseSchema<Map<T, R>> {
+public final class MapSchema<T, R> extends BaseSchema<Map<T, R>> {
     private int size;
     private Map<T, BaseSchema<R>> schemas;
 
