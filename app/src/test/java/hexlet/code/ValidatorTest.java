@@ -71,7 +71,7 @@ public class ValidatorTest {
         data.put("k1", "v1");
         assertTrue(schema.isValid(data));
 
-        schema.sizeOf(2);
+        schema.sizeof(2);
         assertFalse(schema.isValid(data));
         data.put("k2", "v2");
         assertTrue(schema.isValid(data));

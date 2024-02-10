@@ -11,7 +11,7 @@ public final class MapSchema<T, R> extends BaseSchema<Map<T, R>> {
         return this;
     }
 
-    public MapSchema<T, R> sizeOf(int count) {
+    public MapSchema<T, R> sizeof(int count) {
         size = count;
         return this;
     }
