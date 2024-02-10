@@ -1,4 +1,4 @@
-package hexlet.code.abstracts;
+package hexlet.code.schemas;
 
 public abstract class BaseSchema<T> {
     private boolean isRequired;

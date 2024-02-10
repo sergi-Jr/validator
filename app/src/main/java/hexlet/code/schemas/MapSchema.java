@@ -1,7 +1,5 @@
 package hexlet.code.schemas;
 
-import hexlet.code.abstracts.BaseSchema;
-
 import java.util.Map;
 
 public final class MapSchema<T, R> extends BaseSchema<Map<T, R>> {
