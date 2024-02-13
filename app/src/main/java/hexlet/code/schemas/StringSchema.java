@@ -3,35 +3,30 @@ package hexlet.code.schemas;
 import org.apache.commons.lang3.StringUtils;
 
 public final class StringSchema extends BaseSchema<String> {
-    private int minLength;
-    private String sequence;
 
+    @Override
     public StringSchema required() {
-        super.required();
+        validations.add(s -> !StringUtils.isEmpty(s));
         return this;
     }
 
     public StringSchema minLength(int min) {
-        minLength = min;
+        validations.add(s -> {
+            if (s != null) {
+                return min <= s.length();
+            }
+            return true;
+        });
         return this;
     }
-
 
     public StringSchema contains(String str) {
-        sequence = str;
+        validations.add(s -> {
+            if (s != null) {
+                return s.contains(str);
+            }
+            return true;
+        });
         return this;
-    }
-
-    @Override
-    public boolean isValid(String str) {
-        boolean isValid;
-        if (StringUtils.isEmpty(str)) {
-            return !isRequired();
-        }
-
-        isValid = minLength <= str.length();
-        isValid = sequence != null ? str.contains(sequence) : isValid;
-
-        return isValid;
     }
 }

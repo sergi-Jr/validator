@@ -1,36 +1,30 @@
 package hexlet.code.schemas;
 
 public final class NumberSchema extends BaseSchema<Integer> {
-    private record Bound(int lower, int upper) { }
 
-    private boolean isPositive;
-    private Bound bounds;
-
+    @Override
     public NumberSchema required() {
         super.required();
         return this;
     }
 
     public NumberSchema positive() {
-        isPositive = true;
+        validations.add(n -> {
+            if (n != null) {
+                return 0 < n;
+            }
+            return true;
+        });
         return this;
     }
 
     public NumberSchema range(int lowerBound, int upperBound) {
-        bounds = new Bound(lowerBound, upperBound);
+        validations.add(n -> {
+            if (n != null){
+                return lowerBound <= n && n <= upperBound;
+            }
+            return true;
+        });
         return this;
     }
-
-    @Override
-    public boolean isValid(Integer num) {
-        boolean isValid = true;
-        if (num == null) {
-            return !isRequired();
-        }
-
-        isValid = isPositive ? 0 < num : isValid;
-        isValid = bounds != null ? bounds.lower() <= num && num <= bounds.upper() : isValid;
-        return isValid;
-    }
-
 }

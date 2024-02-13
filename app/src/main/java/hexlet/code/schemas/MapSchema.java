@@ -3,35 +3,28 @@ package hexlet.code.schemas;
 import java.util.Map;
 
 public final class MapSchema<T, R> extends BaseSchema<Map<T, R>> {
-    private int size;
     private Map<T, BaseSchema<R>> schemas;
 
+    @Override
     public MapSchema<T, R> required() {
         super.required();
         return this;
     }
 
     public MapSchema<T, R> sizeof(int count) {
-        size = count;
+        validations.add(m -> {
+            if (m != null) {
+                return count == m.size();
+            }
+            return true;
+        });
         return this;
     }
 
     public MapSchema<T, R> shape(Map<T, BaseSchema<R>> sch) {
         schemas = sch;
+        validations.add(this::applySchema);
         return this;
-    }
-
-    @Override
-    public boolean isValid(Map<T, R> map) {
-        boolean isValid = true;
-        if (map == null) {
-            return !isRequired();
-        }
-
-        isValid = size != 0 ? map.size() == size : isValid;
-        isValid = schemas != null ? applySchema(map) : isValid;
-
-        return isValid;
     }
 
     private boolean applySchema(Map<T, R> map) {

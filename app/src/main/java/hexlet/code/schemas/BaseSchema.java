@@ -1,19 +1,19 @@
 package hexlet.code.schemas;
 
-public abstract class BaseSchema<T> {
-    private boolean isRequired;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
 
-    /** Instructs the schema to check the passed object for the presence of that object.
-     * @return BaseSchema type
-     */
-    protected BaseSchema<T> required() {
-        isRequired = true;
-        return this;
+public abstract class BaseSchema<T> {
+    protected List<Predicate<T>> validations = new LinkedList<>();
+
+    public boolean isValid(T object) {
+        return validations.stream().allMatch(validation -> validation.test(object));
     }
 
-    public abstract boolean isValid(T object);
-
-    public final boolean isRequired() {
-        return isRequired;
+    public BaseSchema<T> required() {
+        validations.add(Objects::nonNull);
+        return this;
     }
 }
