@@ -20,7 +20,7 @@ public final class NumberSchema extends BaseSchema<Integer> {
 
     public NumberSchema range(int lowerBound, int upperBound) {
         validations.add(n -> {
-            if (n != null){
+            if (n != null) {
                 return lowerBound <= n && n <= upperBound;
             }
             return true;
