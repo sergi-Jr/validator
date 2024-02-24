@@ -12,18 +12,13 @@ public final class MapSchema<T, R> extends BaseSchema<Map<T, R>> {
     }
 
     public MapSchema<T, R> sizeof(int count) {
-        validations.add(m -> {
-            if (m != null) {
-                return count == m.size();
-            }
-            return true;
-        });
+        validations.put("sizeof", m -> m == null || m.size() == count);
         return this;
     }
 
     public MapSchema<T, R> shape(Map<T, BaseSchema<R>> sch) {
         schemas = sch;
-        validations.add(this::applySchema);
+        validations.put("shape", this::applySchema);
         return this;
     }
 

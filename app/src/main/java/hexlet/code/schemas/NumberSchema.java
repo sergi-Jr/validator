@@ -9,22 +9,12 @@ public final class NumberSchema extends BaseSchema<Integer> {
     }
 
     public NumberSchema positive() {
-        validations.add(n -> {
-            if (n != null) {
-                return 0 < n;
-            }
-            return true;
-        });
+        validations.put("positive", n -> n == null || n > 0);
         return this;
     }
 
     public NumberSchema range(int lowerBound, int upperBound) {
-        validations.add(n -> {
-            if (n != null) {
-                return lowerBound <= n && n <= upperBound;
-            }
-            return true;
-        });
+        validations.put("range", n -> n == null || (lowerBound <= n && n <= upperBound));
         return this;
     }
 }
