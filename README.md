@@ -12,7 +12,7 @@ The designed validation schemes support an "on-the-fly" configuration format.
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b8b2bbcb3497073cc12a/test_coverage)](https://codeclimate.com/github/sergi-Jr/java-project-78/test_coverage)
 
 ## How to use
-Download [zip](https://github.com/sergi-Jr/java-project-78/archive/refs/heads/main.zip). Then unzip into prefered folder.  
+Download [zip](https://github.com/sergi-Jr/validator/archive/refs/heads/main.zip). Then unzip into prefered folder.  
 Download [Java](https://www.java.com/ru/download/manual.jsp) for your OS.
 
 Run terminal on your machine, change dir to folder where unzipped Make file is situated and type:
