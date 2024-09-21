@@ -1,6 +1,6 @@
 ## Description  
 The project is an input data validation library. 
-Currently, it supports the following types of validation: **strings**, **integers**, **Map<T,R> collections** (where **T** is a key - any type, and **R** is a value - from types suitable for validation).  
+Currently,  it supports the following types of validation: **strings**, **integers**, **Map<T,R> collections** (where **T** is a key - any type, and **R** is a value - from types suitable for validation).  
 The designed validation schemes support an "on-the-fly" configuration format.
 
 ### Hexlet tests and linter status:
