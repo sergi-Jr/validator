@@ -13,8 +13,8 @@ public final class NumberSchema extends BaseSchema<Integer> {
         return this;
     }
 
-    public NumberSchema range(int lowerBound, int upperBound) {
-        validations.put("range", n -> n == null || (lowerBound <= n && n <= upperBound));
+    public NumberSchema range(int lowerBorder, int upperBorder) {
+        validations.put("range", n -> n == null || (lowerBorder <= n && n <= upperBorder));
         return this;
     }
 }
